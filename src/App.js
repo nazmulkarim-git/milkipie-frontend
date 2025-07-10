@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
 import Customers from './pages/Customers';
@@ -29,8 +29,17 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-100">
-        <nav className="bg-white shadow-md p-4 flex justify-between items-center">
+        <nav className="bg-white shadow-md p-4 flex flex-wrap justify-between items-center">
           <div className="font-bold text-xl text-blue-700">Milkipie Admin</div>
+          <div className="flex gap-4">
+            <Link to="/" className="text-blue-600 hover:underline">Dashboard</Link>
+            <Link to="/customers" className="text-blue-600 hover:underline">Customers</Link>
+            <Link to="/orders" className="text-blue-600 hover:underline">Orders</Link>
+            <Link to="/payments" className="text-blue-600 hover:underline">Payments</Link>
+            <Link to="/inventory" className="text-blue-600 hover:underline">Inventory</Link>
+            <Link to="/expenses" className="text-blue-600 hover:underline">Expenses</Link>
+            <Link to="/products" className="text-blue-600 hover:underline">Products</Link>
+          </div>
           <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-1 rounded-lg">Logout</button>
         </nav>
         <div className="p-4">
