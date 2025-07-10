@@ -10,7 +10,7 @@ function LoginPage({ onLogin }) {
     e.preventDefault();
     setError('');
     try {
-      const { data } = await axios.post('http://localhost:5000/api/auth/login', { username, password });
+      const { data } = await axios.post('https://milkipie-backend.onrender.com/api/auth/login', { username, password });
       onLogin(data.token);
     } catch {
       setError('Invalid username or password');

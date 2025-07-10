@@ -7,7 +7,7 @@ function Orders({ token }) {
 
   const fetchOrders = async () => {
     setLoading(true);
-    const res = await axios.get('http://localhost:5000/api/orders/today', {
+    const res = await axios.get('https://milkipie-backend.onrender.com/api/orders/today', {
       headers: { Authorization: `Bearer ${token}` }
     });
     setOrders(res.data);
@@ -19,7 +19,7 @@ function Orders({ token }) {
   }, [token]);
 
   const updateStatus = async (id, status) => {
-    await axios.put(`http://localhost:5000/api/orders/${id}`, { status }, {
+    await axios.put(`https://milkipie-backend.onrender.com/api/orders/${id}`, { status }, {
       headers: { Authorization: `Bearer ${token}` }
     });
     fetchOrders();

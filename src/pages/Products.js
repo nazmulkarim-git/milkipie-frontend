@@ -6,7 +6,7 @@ function Products({ token }) {
   const [form, setForm] = useState({ milkType: '', sizesAvailable: '', notes: '' });
 
   const fetchProducts = async () => {
-    const res = await axios.get('http://localhost:5000/api/products', {
+    const res = await axios.get('https://milkipie-backend.onrender.com/api/products', {
       headers: { Authorization: `Bearer ${token}` }
     });
     setProducts(res.data);
@@ -18,7 +18,7 @@ function Products({ token }) {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/api/products', {
+    await axios.post('https://milkipie-backend.onrender.com/api/products', {
       milkType: form.milkType,
       sizesAvailable: form.sizesAvailable.split(',').map(s => s.trim()),
       notes: form.notes

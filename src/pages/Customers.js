@@ -17,7 +17,7 @@ function Customers({ token }) {
   }, [token]);
 
   const fetchCustomers = async () => {
-    const res = await axios.get('http://localhost:5000/api/customers', {
+    const res = await axios.get('https://milkipie-backend.onrender.com/api/auth/customers', {
       headers: { Authorization: `Bearer ${token}` }
     });
     setCustomers(res.data);
@@ -26,11 +26,11 @@ function Customers({ token }) {
   const handleSubmit = async e => {
     e.preventDefault();
     if (editing) {
-      await axios.put(`http://localhost:5000/api/customers/${editing}`, form, {
+      await axios.put(`https://milkipie-backend.onrender.com/api/auth/customers/${editing}`, form, {
         headers: { Authorization: `Bearer ${token}` }
       });
     } else {
-      await axios.post('http://localhost:5000/api/customers', form, {
+      await axios.post('https://milkipie-backend.onrender.com/api/auth/customers', form, {
         headers: { Authorization: `Bearer ${token}` }
       });
     }
@@ -46,7 +46,7 @@ function Customers({ token }) {
 
   const handleDelete = async id => {
     if (window.confirm("Delete this customer?")) {
-      await axios.delete(`http://localhost:5000/api/customers/${id}`, {
+      await axios.delete(`https://milkipie-backend.onrender.com/api/auth/customers/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchCustomers();

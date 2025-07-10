@@ -6,7 +6,7 @@ function Expenses({ token }) {
   const [form, setForm] = useState({ date: '', category: 'Fuel', amount: '', notes: '' });
 
   const fetchExpenses = async () => {
-    const res = await axios.get('http://localhost:5000/api/expenses', {
+    const res = await axios.get('https://milkipie-backend.onrender.com/api/auth/expenses', {
       headers: { Authorization: `Bearer ${token}` }
     });
     setExpenses(res.data);
@@ -18,7 +18,7 @@ function Expenses({ token }) {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/api/expenses', {
+    await axios.post('https://milkipie-backend.onrender.com/api/auth/expenses', {
       ...form, amount: Number(form.amount)
     }, { headers: { Authorization: `Bearer ${token}` } });
     setForm({ date: '', category: 'Fuel', amount: '', notes: '' });

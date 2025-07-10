@@ -5,7 +5,7 @@ function Dashboard({ token }) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/dashboard', {
+    axios.get('https://milkipie-backend.onrender.com/api/auth/dashboard', {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setData(res.data));
   }, [token]);

@@ -6,7 +6,7 @@ function Inventory({ token }) {
   const [form, setForm] = useState({ milkType: '', size: '', quantity: '', supplierName: '', cost: '' });
 
   const fetchInventory = async () => {
-    const res = await axios.get('http://localhost:5000/api/inventory', {
+    const res = await axios.get('https://milkipie-backend.onrender.com/api/auth/inventory', {
       headers: { Authorization: `Bearer ${token}` }
     });
     setInventory(res.data);
@@ -18,7 +18,7 @@ function Inventory({ token }) {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/api/inventory/incoming', {
+    await axios.post('https://milkipie-backend.onrender.com/api/auth/inventory/incoming', {
       ...form, quantity: Number(form.quantity), cost: Number(form.cost)
     }, { headers: { Authorization: `Bearer ${token}` } });
     setForm({ milkType: '', size: '', quantity: '', supplierName: '', cost: '' });

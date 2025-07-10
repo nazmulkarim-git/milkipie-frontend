@@ -8,14 +8,14 @@ function Payments({ token }) {
   const [form, setForm] = useState({ amount: '', method: 'Cash' });
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/customers', {
+    axios.get('https://milkipie-backend.onrender.com/api/customers', {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setCustomers(res.data));
   }, [token]);
 
   useEffect(() => {
     if (selectedCustomer) {
-      axios.get(`http://localhost:5000/api/payments/customer/${selectedCustomer}`, {
+      axios.get(`https://milkipie-backend.onrender.com/api/payments/customer/${selectedCustomer}`, {
         headers: { Authorization: `Bearer ${token}` }
       }).then(res => setPayments(res.data));
     }
@@ -23,14 +23,14 @@ function Payments({ token }) {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/api/payments', {
+    await axios.post('https://milkipie-backend.onrender.com/api/payments', {
       customerId: selectedCustomer,
       amount: Number(form.amount),
       method: form.method
     }, { headers: { Authorization: `Bearer ${token}` } });
     setForm({ amount: '', method: 'Cash' });
     // refresh
-    axios.get(`http://localhost:5000/api/payments/customer/${selectedCustomer}`, {
+    axios.get(`https://milkipie-backend.onrender.com/api/payments/customer/${selectedCustomer}`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setPayments(res.data));
   };
